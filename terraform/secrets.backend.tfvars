@@ -1,5 +1,0 @@
-bucket            = "yc-hexlet-valman-state"
-access_key        = "YCAJEr4x4D4O3r8WDeftl5aun"
-secret_key        = "YCPAiymaGzUuPIxnDUxnP-f5U0JJ3Wp6Hz7ydDH0"
-dynamodb_table    = "lock"
-dynamodb_endpoint = "https://docapi.serverless.yandexcloud.net/ru-central1/b1gbcrf8rjvmrrireskj/etnegupv99duf65kre7c"
