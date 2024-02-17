@@ -1,0 +1,13 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Start redmine container
+      community.docker.docker_container:
+        env_file: .env
+        image: 'redmine:latest'
+        name: redmine
+        restart_policy: always
+        state: started
+        ports:
+          - "80:3000"
+          - "443:3000"

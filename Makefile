@@ -18,3 +18,9 @@ edit-vault:
 
 generate-vars:
 	ansible-playbook --vault-password-file ansible/vault-password ansible/terraform.yml
+
+install:
+	ansible-galaxy install -r ansible/requirements.yml
+
+deploy:
+	ansible-playbook -i ansible/inventory.ini -v --vault-password-file ansible/vault-password ansible/playbook.yml

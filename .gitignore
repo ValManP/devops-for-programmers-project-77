@@ -2,3 +2,5 @@
 .terraform/
 *.backup
 vault-password
+.env
+inventory.ini
