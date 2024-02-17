@@ -2,11 +2,11 @@ resource "yandex_alb_target_group" "lb_target_group" {
   name = "target-group"
 
   target {
-    subnet_id  = yandex_vpc_subnet.default.id
+    subnet_id  = yandex_vpc_subnet.subnet.id
     ip_address = yandex_compute_instance.vm["instance-1"].network_interface.0.ip_address
   }
   target {
-    subnet_id  = yandex_vpc_subnet.default.id
+    subnet_id  = yandex_vpc_subnet.subnet.id
     ip_address = yandex_compute_instance.vm["instance-2"].network_interface.0.ip_address
   }
 }
@@ -17,11 +17,11 @@ resource "yandex_alb_http_router" "lb-router" {
 
 resource "yandex_alb_load_balancer" "balancer" {
   name       = "load-balancer"
-  network_id = yandex_vpc_network.default.id
+  network_id = yandex_vpc_network.network.id
   allocation_policy {
     location {
       zone_id   = "ru-central1-a"
-      subnet_id = yandex_vpc_subnet.default.id
+      subnet_id = yandex_vpc_subnet.subnet.id
     }
   }
 

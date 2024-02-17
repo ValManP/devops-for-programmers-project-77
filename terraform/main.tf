@@ -1,10 +1,10 @@
-resource "yandex_vpc_network" "default" {
+resource "yandex_vpc_network" "network" {
   folder_id = var.yc_folder_id
 }
 
-resource "yandex_vpc_subnet" "default" {
+resource "yandex_vpc_subnet" "subnet" {
   zone           = "ru-central1-a"
-  network_id     = "${yandex_vpc_network.default.id}"
+  network_id     = "${yandex_vpc_network.network.id}"
   v4_cidr_blocks = ["10.5.0.0/24"]
   folder_id      = var.yc_folder_id
 }
@@ -35,7 +35,7 @@ resource "yandex_compute_instance" "vm" {
   }
 
   network_interface {
-    subnet_id = "${yandex_vpc_subnet.default.id}"
+    subnet_id = "${yandex_vpc_subnet.subnet.id}"
   }
 
   metadata = {
