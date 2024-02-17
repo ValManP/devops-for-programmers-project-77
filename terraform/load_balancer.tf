@@ -15,6 +15,14 @@ resource "yandex_alb_http_router" "lb-router" {
   name = "http-router"
 }
 
+resource "yandex_vpc_address" "lb-addr" {
+  name = "lb-address"
+
+  external_ipv4_address {
+    zone_id = "ru-central1-a"
+  }
+}
+
 resource "yandex_alb_load_balancer" "balancer" {
   name       = "load-balancer"
   network_id = yandex_vpc_network.network.id
@@ -30,6 +38,7 @@ resource "yandex_alb_load_balancer" "balancer" {
     endpoint {
       address {
         external_ipv4_address {
+          address = yandex_vpc_address.lb-addr.external_ipv4_address[0].address 
         }
       }
       ports = [80]
@@ -47,6 +56,7 @@ resource "yandex_alb_load_balancer" "balancer" {
       ports = [443]
       address {
         external_ipv4_address {
+          address = yandex_vpc_address.lb-addr.external_ipv4_address[0].address
         }
       }
     }
@@ -88,7 +98,7 @@ resource "yandex_alb_backend_group" "backend-group" {
       timeout  = "1s"
       interval = "1s"
       http_healthcheck {
-        path = "/ping"
+        path = "/"
       }
     }
   }

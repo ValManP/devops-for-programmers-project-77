@@ -1,6 +1,12 @@
 - hosts: all
   become: yes
   tasks:
+    - name: Copy env file
+      ansible.builtin.copy:
+        src: .env
+        dest: .env
+        mode: '0644'
+
     - name: Start redmine container
       community.docker.docker_container:
         env_file: .env
