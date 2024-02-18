@@ -5,6 +5,8 @@ resource "local_file" "ansible-env" {
     redmine_db_password = var.db_password
     redmine_db_database = var.db_name
     redmine_db_port     = 6432
+    datadog_api_key     = var.datadog_api_key
+    datadog_app_key     = var.datadog_app_key
   })
   filename = "../ansible/.env"
 }

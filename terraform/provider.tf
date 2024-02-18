@@ -8,6 +8,10 @@ terraform {
       source = "hashicorp/local"
       version = "2.4.1"
     }
+    datadog = {
+      source = "DataDog/datadog"
+      version = "3.36.1"
+    }
   }
 }
 
@@ -19,3 +23,9 @@ provider "yandex" {
 }
 
 provider "local" {}
+
+provider "datadog" {
+  api_key = var.datadog_api_key
+  app_key = var.datadog_app_key
+  api_url = "https://api.us5.datadoghq.com/"
+}
