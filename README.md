@@ -6,6 +6,7 @@ https://valman.info
 ## Requirements
 
 - ansible
+- terraform
 - make
 
 ## Commands
