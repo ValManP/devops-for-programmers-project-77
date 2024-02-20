@@ -17,7 +17,7 @@
         ports:
           - "80:3000"
           - "443:3000"
-    
+
     - name: Start datadog
       import_role:
         name: datadog.datadog
