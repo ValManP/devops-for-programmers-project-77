@@ -38,7 +38,7 @@ resource "yandex_alb_load_balancer" "balancer" {
     endpoint {
       address {
         external_ipv4_address {
-          address = yandex_vpc_address.lb-addr.external_ipv4_address[0].address 
+          address = yandex_vpc_address.lb-addr.external_ipv4_address[0].address
         }
       }
       ports = [80]
